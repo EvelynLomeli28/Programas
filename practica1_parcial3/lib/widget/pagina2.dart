@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:practica1_parcial3/widget/pagina3.dart';
 
@@ -10,76 +11,68 @@ class Pagina2 extends StatefulWidget {
   }
 }
 
-class Datos extends State<Pagina2> {
+class Datos extends State<Pagina2>{
   final _llave = GlobalKey<FormState>();
   final TextEditingController nombre = TextEditingController();
   final TextEditingController apellidos = TextEditingController();
-
-  void validar() {
-    String nom = nombre.text;
+  
+  void validar(){
+    String non = nombre.text;
     String ape = apellidos.text;
-    String cadena = "$nom - $ape";
+    String cadena = non +" - "+ape;
 
-    if (_llave.currentState?.validate() ?? false) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Pagina3(cadena: cadena),
-        ),
-      );
-    } else {
+     if (_llave.currentState?.validate() ?? false){
+           Navigator.push(
+            context, 
+            MaterialPageRoute(
+              builder: (context) => Pagina3(
+                cadena : cadena,
+              ),
+            ),
+            )
+            ;
+     }else{
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Error en los datos')),
-      );
-    }
-  }
+        SnackBar(content: Text('Error')),
+        );
+     }
 
-  String? _vNombre(String? value) {
-    if (value == null || value.isEmpty) {
+  }
+  String? _vNombre(String? value){
+    if(value== null || value.isEmpty){
       return 'Escribe el nombre';
     }
-    
-    // Verificar que la primera letra sea mayúscula
-    if (value[0] != value[0].toUpperCase()) {
-      return 'La primera letra debe ser mayúscula';
-    }
-    
-    // Verificar que el resto sean minúsculas
-    final resto = value.substring(1);
-    final regexMinusculas = RegExp(r'^[a-záéíóúñ]*$');
-    if (!regexMinusculas.hasMatch(resto)) {
-      return 'El resto debe ser minúsculas';
-    }
-    
-    return null;
-  }
 
-  String? _vApellidos(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Escribe los apellidos';
+    String letra = value[0];
+    if (letra == value[0].toUpperCase()){
+          final nom = RegExp(r'^[a-z]+$');
+          String letras = value.substring(1,value.length);
+          print(letras);
+            if(!nom.hasMatch(letras)){
+                  return 'Error solo minusculas';
+            }
+    }else{
+      return 'La primer letra debe ser mayusculas';
     }
-    
-    // Verificar que la primera letra sea mayúscula
-    if (value[0] != value[0].toUpperCase()) {
-      return 'La primera letra debe ser mayúscula';
+
+     
+  }
+  String? _vApellidos(String? value){
+     if(value== null || value.isEmpty){
+      return 'Escribe el nombre';
     }
-    
-    // Verificar que el resto sean minúsculas
-    final resto = value.substring(1);
-    final regexMinusculas = RegExp(r'^[a-záéíóúñ\s]*$');
-    if (!regexMinusculas.hasMatch(resto)) {
-      return 'El resto debe ser minúsculas';
-    }
-    
-    return null;
+       final nom = RegExp(r'^[a-z]+$');
+     if(!nom.hasMatch(value)){
+          return 'Error solo minusculas';
+     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Practica 1'),
-        backgroundColor: const Color.fromARGB(255, 187, 57, 220),
+        title: Text('Practica 1'),
+        backgroundColor: Colors.lime,
       ),
       body: Form(
         key: _llave,
@@ -92,49 +85,47 @@ class Datos extends State<Pagina2> {
                 child: Padding(
                   padding: const EdgeInsets.all(18.0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextFormField(
                         controller: nombre,
-                        decoration: const InputDecoration(
-                          labelText: 'Nombre',
-                          border: OutlineInputBorder(),
+                        decoration: InputDecoration(
+                          labelText: 'Nombre'
                         ),
                         validator: _vNombre,
                       ),
-                      const SizedBox(height: 20),
                       TextFormField(
                         controller: apellidos,
-                        decoration: const InputDecoration(
-                          labelText: 'Apellidos',
-                          border: OutlineInputBorder(),
+                        decoration: InputDecoration(
+                          labelText: 'Apellidos'
                         ),
                         validator: _vApellidos,
                       ),
                     ],
                   ),
                 ),
+                ),
               ),
-            ),
-            Expanded(
+              Expanded(
               flex: 1,
-              child: Container(
-                color: const Color.fromARGB(255, 85, 21, 110),
+              child:Container(
+                color: Colors.lightGreenAccent,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 80, bottom: 80),
                   child: SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: validar,
-                      child: const Text('Aceptar'),
-                    ),
+                      onPressed: validar, 
+                      child: Text('Aceptar'),
+                      ),
                   ),
                 ),
               ),
-            ),
+              ),
           ],
         ),
       ),
+        
     );
   }
+
 }
