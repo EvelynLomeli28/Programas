@@ -35,6 +35,7 @@ class Datos extends State<Pagina2>{
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error')),
         );
+
      }
 
   }
@@ -54,6 +55,7 @@ class Datos extends State<Pagina2>{
     }else{
       return 'La primer letra debe ser mayusculas';
     }
+    return null;
 
      
   }
@@ -65,6 +67,7 @@ class Datos extends State<Pagina2>{
      if(!nom.hasMatch(value)){
           return 'Error solo minusculas';
      }
+     return null;
   }
 
   @override

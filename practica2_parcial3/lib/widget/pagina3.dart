@@ -26,6 +26,7 @@ class Clases extends State<Pagina3>{
 
 String a= "";
 String p1 = "";
+String p22 = "";
   @override
   void initState() {
     super.initState();
@@ -57,7 +58,7 @@ String p1 = "";
         itemCount: items.length,
         itemBuilder: (context, index)=>Card(
           child: ListTile(
-            leading: Icon(Icons.ac_unit),
+            leading: Icon(Icons.numbers),
             title: Text(items[index].titulo),
             subtitle: Text(items[index].descripcion),
           ),
