@@ -36,6 +36,7 @@ class Base extends State<Pagina3>{
     return Scaffold(
       appBar: AppBar(
         title: Text('Pagina 3'),
+        backgroundColor: Colors.purple,
       ),
       body:SingleChildScrollView(
                 child: Padding(
@@ -44,10 +45,7 @@ class Base extends State<Pagina3>{
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                        SizedBox(
-                          width: double.infinity,
-                            child: Text('${widget.c}',),
-                        ),
+                        Text('${widget.c}',),
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(onPressed: Elevar,

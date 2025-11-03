@@ -121,7 +121,7 @@ class Datos extends State<Pagina2>{
               child:Container(
                 color: const Color.fromARGB(255, 175, 89, 255),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 80, bottom: 80),
+                  padding: const EdgeInsets.only(top: 100, bottom: 70),
                   child: SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(onPressed: validar,

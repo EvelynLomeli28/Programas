@@ -2,21 +2,21 @@ import 'package:app2_tarea1/widget/pagina2.dart';
 import 'package:app2_tarea1/widget/pagina3.dart';
 import 'package:flutter/material.dart';
 
-class Pagina1 extends StatelessWidget {
+class Pagina1 extends StatefulWidget {
   const Pagina1({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Disenio();
+  State<StatefulWidget> createState() {
+    return Base();
   }
 }
-class Disenio extends StatelessWidget {
+class Base extends State<Pagina1> {
   void Comparar(BuildContext context) {
     final cnum1 = n1.text;
     final cnum2 = n2.text;
     if (_llave.currentState?.validate() ?? false){
-      if (cnum1.length != cnum2.length){
-        if (cnum1.length > cnum2.length){
+      if (int.tryParse(cnum1) != int.tryParse(cnum2)){
+        if (int.tryParse(cnum1)! > int.tryParse(cnum2)!){
         Navigator.push(
               context, 
               MaterialPageRoute(
@@ -27,7 +27,7 @@ class Disenio extends StatelessWidget {
               )
               ;
         }
-        else{
+        else{ 
           Navigator.push(
                 context, 
                 MaterialPageRoute(
@@ -87,11 +87,9 @@ class Disenio extends StatelessWidget {
   final _llave = GlobalKey<FormState>();
   TextEditingController n1 = TextEditingController();
   TextEditingController n2 = TextEditingController();
-
-  Disenio({super.key});
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
         appBar: AppBar(
           title: Text('Pagina 1'),
           backgroundColor: const Color.fromARGB(255, 101, 15, 120),
@@ -157,5 +155,5 @@ class Disenio extends StatelessWidget {
         ),
       ),
       );
-    }
+  }
 }

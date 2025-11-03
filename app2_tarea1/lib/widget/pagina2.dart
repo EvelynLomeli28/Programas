@@ -36,24 +36,23 @@ class Base extends State<Pagina2>{
     return Scaffold(
       appBar: AppBar(
         title: Text('Pagina 2'),
+        backgroundColor: Colors.purple,
       ),
       body:Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 200, bottom:150),
+                  padding: const EdgeInsets.only(top: 10, bottom:15, left: 15, right: 15 ),
                   child: 
                   Card(
-                    elevation: 5, 
+                    color: const Color.fromARGB(129, 255, 255, 255),
+                    elevation: 10, 
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                          width: double.infinity,
-                            child: Text('${widget.c}',),
-                        ),
+                        Text('${widget.c}',),
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(onPressed: Elevar,

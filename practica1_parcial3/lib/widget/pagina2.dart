@@ -75,7 +75,7 @@ class Datos extends State<Pagina2>{
     return Scaffold(
       appBar: AppBar(
         title: Text('Practica 1'),
-        backgroundColor: Colors.lime,
+        backgroundColor: const Color.fromARGB(181, 185, 57, 220),
       ),
       body: Form(
         key: _llave,
@@ -111,9 +111,9 @@ class Datos extends State<Pagina2>{
               Expanded(
               flex: 1,
               child:Container(
-                color: Colors.lightGreenAccent,
+                color: const Color.fromARGB(255, 230, 89, 255),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 80, bottom: 80),
+                  padding: const EdgeInsets.only(top: 40, bottom: 40),
                   child: SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
