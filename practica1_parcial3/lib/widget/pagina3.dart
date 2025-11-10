@@ -5,25 +5,20 @@ class Pagina3 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return Clases();
-  }
-}
+  }}
 class Item{
   final String titulo;
   final String descripcion;
   Item(this.titulo, this.descripcion);
 }
-
 class Clases extends State<Pagina3>{
    List<Item> items=[
-      Item('titulo', 'descripcion'),
-    ];
+      Item('titulo', 'descripcion'),];
     void agregar(){
       setState(() {
          int indexLista = items.length + 1;
       items.add(Item('titulo $indexLista', 'descripcion $indexLista'));
-      });
-    }
-
+      });}
 String a= "";
 String p1 = "";
   @override
@@ -31,8 +26,7 @@ String p1 = "";
     super.initState();
     int p = widget.cadena.indexOf(" - ");
      a = widget.cadena.substring(0,p);
-     p1 = widget.cadena.substring(p+1);
-  }
+     p1 = widget.cadena.substring(p+1);}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,15 +36,11 @@ String p1 = "";
             Text("${a}",
             style: TextStyle(
               color: Colors.white,
-            ),
-            ),
+            ),),
             Text("${p1}",
             style: TextStyle(
               color: Colors.white,
-            ),
-            ),
-          ],
-        ),
+            ),),],),
         backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
@@ -60,14 +50,9 @@ String p1 = "";
             leading: Icon(Icons.ac_unit),
             title: Text(items[index].titulo),
             subtitle: Text(items[index].descripcion),
-          ),
-        ) ,
-        ),
+          ),) ,),
         floatingActionButton:FloatingActionButton(
           onPressed: agregar,
           child: Icon(Icons.add),
-          ),
-    );
-  }
-
+          ),);}
 }

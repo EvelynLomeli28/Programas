@@ -1,6 +1,4 @@
- 
-import 'package:flutter/material.dart';
-
+ import 'package:flutter/material.dart';
 class Pagina2 extends StatefulWidget{
   final String c;
   const Pagina2({super.key, required this.c});
@@ -9,7 +7,6 @@ class Pagina2 extends StatefulWidget{
     return Base();
   }
 }
-
 class Base extends State<Pagina2>{
   void Elevar(){
     showDialog(

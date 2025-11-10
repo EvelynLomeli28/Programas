@@ -1,17 +1,11 @@
-
-
 import 'package:flutter/material.dart';
 import 'datos.dart';
 class Lista extends StatefulWidget {
  final List<Item> items;
-  const Lista({
-    super.key,
-    required this.items,
-    }); 
+  const Lista({super.key,required this.items,}); 
   @override
   State<StatefulWidget> createState() => _ListaState();
 }
-
 class _ListaState extends State<Lista> {
   @override
   Widget build(BuildContext context) {
@@ -19,17 +13,13 @@ class _ListaState extends State<Lista> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Lista de productos'),
-        backgroundColor:Colors.lightGreen,
-      ),
+        backgroundColor:Colors.lightGreen,),
       body: items.isEmpty
       ? Center(
         child: Text(
           'Lista Vacia',
           style: TextStyle(
-            color:Colors.red,
-            ),
-            ),
-      )
+            color:Colors.red,),),)
       : Center(
        child: Padding(
         padding: EdgeInsets.all(15),
@@ -45,25 +35,11 @@ class _ListaState extends State<Lista> {
                 subtitle: Column(
                   children: [
                     Text(item.descripcion),
-                    Text('Precio: ${item.precio}'),
-                  ],
-                ),
+                    Text('Precio: ${item.precio}'),],),
                 trailing: IconButton(
                   color: Colors.red,
                   onPressed: (){
                     setState(() {
-                      //print('Eliminar $index');
                       items.removeAt(index);
-                    });
-                  }, 
-                  icon: Icon(Icons.delete)
-                  ),
-            ),
-            );
-          },
-          ),
-       ),
-      ),
-    );
-  }
-}
+                    });}, 
+                  icon: Icon(Icons.delete)),),);},),),),);}}

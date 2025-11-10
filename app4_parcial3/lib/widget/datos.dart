@@ -1,12 +1,10 @@
 import 'package:app4_parcial3/widget/lista.dart';
 import 'package:flutter/material.dart';
-
 class Datos extends StatefulWidget {
   const Datos({super.key});
   @override
   State<StatefulWidget> createState() => _DatosState();
 }
-
 class Item{
   final String producto;
   final String descripcion;
@@ -17,9 +15,7 @@ class _DatosState extends State<Datos> {
 TextEditingController pre = TextEditingController();
 TextEditingController des = TextEditingController();
 TextEditingController prec = TextEditingController();
-
 List<Item> items=[];
-
   void _agregar(){
   setState(() {
     String p = pre.text;
@@ -31,28 +27,18 @@ List<Item> items=[];
       des.clear();
       prec.clear();
        ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Datos agregados a la lista")),
-      );
+        SnackBar(content: Text("Datos agregados a la lista")),);
     }else{
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Faltan datos")),
-      );
-    }
-    
-  });
-
-  }
-
+        SnackBar(content: Text("Faltan datos")),);}
+  });}
   void _enviar() async{
     Navigator.push(
       context, 
       MaterialPageRoute(
-        builder: (context) => Lista(items : items),
-        ),
-      );
+        builder: (context) => Lista(items : items),),);
       setState(() {});
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,19 +49,14 @@ List<Item> items=[];
           IconButton(
             onPressed: _enviar, 
             icon: Icon(
-              Icons.list,
-            ),
-            ),
-        ],
-      ),
+              Icons.list,),),],),
       body:Center(
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Card(
             elevation: 8,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
+              borderRadius: BorderRadius.circular(15),),
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(
@@ -85,23 +66,17 @@ List<Item> items=[];
                     controller: pre,
                     decoration: InputDecoration(
                       labelText: 'Escribe el producto',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
+                      border: OutlineInputBorder(),),),
                   TextField(
                     controller: des,
                     decoration: InputDecoration(
-                      labelText: 'Escribe el producto',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
+                      labelText: 'Escribe la descripcion',
+                      border: OutlineInputBorder(),),),
                   TextField(
                     controller: prec,
                     decoration: InputDecoration(
-                      labelText: 'Escribe el producto',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
+                      labelText: 'Escribe el precio',
+                      border: OutlineInputBorder(),),),
                   SizedBox(
                     height: 20,
                   ),
@@ -109,15 +84,4 @@ List<Item> items=[];
                     width: double.infinity,
                     child: ElevatedButton.icon(
                       onPressed: _agregar, 
-                      label: Text('Agregar')
-                      ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          ),
-      ),
-    );
-  }
-}
+                      label: Text('Agregar')),),],),),),),),);}}

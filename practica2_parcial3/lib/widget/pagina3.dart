@@ -5,25 +5,21 @@ class Pagina3 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return Clases();
-  }
-}
+  }}
 class Item{
   final String titulo;
   final String descripcion;
   Item(this.titulo, this.descripcion);
 }
-
 class Clases extends State<Pagina3>{
    List<Item> items=[
-      Item('titulo', 'descripcion'),
-    ];
+      Item('titulo', 'descripcion'),];
     void agregar(){
       setState(() {
          int indexLista = items.length + 1;
       items.add(Item('titulo $indexLista', 'descripcion $indexLista'));
       });
     }
-
 String a= "";
 String p1 = "";
 String p22 = "";
@@ -43,15 +39,11 @@ String p22 = "";
             Text("${a}",
             style: TextStyle(
               color: Colors.white,
-            ),
-            ),
+            ),),
             Text("${p1}",
             style: TextStyle(
               color: Colors.white,
-            ),
-            ),
-          ],
-        ),
+            ),),],),
         backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
@@ -61,14 +53,8 @@ String p22 = "";
             leading: Icon(Icons.numbers),
             title: Text(items[index].titulo),
             subtitle: Text(items[index].descripcion),
-          ),
-        ) ,
-        ),
+          ),) ,),
         floatingActionButton:FloatingActionButton(
           onPressed: agregar,
           child: Icon(Icons.add),
-          ),
-    );
-  }
-
-}
+          ),);}}
