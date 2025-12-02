@@ -1,25 +1,18 @@
-
-
-
 import 'package:app3_unidad4/basededatos/basededatoshelper.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-
 class Pagina1 extends StatefulWidget {
   const Pagina1({super.key});
-
   @override
   State<StatefulWidget> createState() {
     return Clase();
   }
 }
-
 class Clase extends State<Pagina1>{
 bool ventana = false;
 void _MostrarDatos(String numeros){
   TextEditingController nombre = TextEditingController();
   TextEditingController precio = TextEditingController();
-
    showDialog(
       context: context, 
       builder: (context) {

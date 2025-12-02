@@ -33,7 +33,7 @@ class Basedatoshelper {
 
   Future<void> _onCreate(Database db, int version) async {
     await _crearTabla(db);
-    print("✅ Tabla 'usuarios' creada exitosamente");
+    print("Tabla 'usuarios' creada exitosamente");
   }
 
   Future<void> _verificarYEstructurar(Database db) async {
@@ -44,12 +44,12 @@ class Basedatoshelper {
       );
       
       if (tablas.isEmpty) {
-        print("📋 La tabla 'usuarios' no existe. Creándola...");
+        print("La tabla 'usuarios' no existe. Creándola...");
         await _crearTabla(db);
       } else {
         // Verificar estructura de columnas
         List<Map> estructura = await db.rawQuery("PRAGMA table_info(usuarios)");
-        print("🔍 Verificando estructura de la tabla...");
+        print("Verificando estructura de la tabla...");
         
         // Lista de columnas requeridas
         List<String> columnasRequeridas = ['id', 'clave', 'nombre', 'correo'];
@@ -64,22 +64,22 @@ class Basedatoshelper {
         // Verificar si faltan columnas
         for (var requerida in columnasRequeridas) {
           if (!columnasExistentes.contains(requerida)) {
-            print("⚠️ Falta columna: $requerida. Intentando agregar...");
+            print("Falta columna: $requerida. Intentando agregar...");
             try {
               if (requerida == 'id') {
                 await db.execute('ALTER TABLE usuarios ADD COLUMN id INTEGER PRIMARY KEY AUTOINCREMENT');
               } else {
                 await db.execute('ALTER TABLE usuarios ADD COLUMN $requerida TEXT');
               }
-              print("✅ Columna $requerida agregada");
+              print("Columna $requerida agregada");
             } catch (e) {
-              print("❌ Error al agregar columna $requerida: $e");
+              print("Error al agregar columna $requerida: $e");
             }
           }
         }
       }
     } catch (e) {
-      print("❌ Error al verificar estructura: $e");
+      print("Error al verificar estructura: $e");
     }
   }
 
@@ -127,7 +127,7 @@ class Basedatoshelper {
       // Generar clave automática
       String clave = _generarClave(nombreLimpio);
       
-      print("📝 Insertando usuario:");
+      print("Insertando usuario:");
       print("  - Clave: $clave");
       print("  - Nombre: $nombreLimpio");
       print("  - Correo: $correoLimpio");
@@ -142,11 +142,11 @@ class Basedatoshelper {
         },
       );
       
-      print("✅ Usuario insertado con ID: $id");
+      print("Usuario insertado con ID: $id");
       return id;
       
     } catch (e) {
-      print("❌ Error al insertar usuario: $e");
+      print("Error al insertar usuario: $e");
       rethrow;
     }
   }
@@ -162,7 +162,7 @@ class Basedatoshelper {
       );
       
       if (tablas.isEmpty) {
-        print("⚠️ La tabla 'usuarios' no existe");
+        print("La tabla 'usuarios' no existe");
         return [];
       }
       
@@ -170,12 +170,12 @@ class Basedatoshelper {
       try {
         return await db.query('usuarios', orderBy: 'id DESC');
       } catch (e) {
-        print("⚠️ Error con ORDER BY, usando sin orden: $e");
+        print("Error con ORDER BY, usando sin orden: $e");
         return await db.query('usuarios');
       }
       
     } catch (e) {
-      print("❌ Error al obtener usuarios: $e");
+      print("Error al obtener usuarios: $e");
       return [];
     }
   }
@@ -190,7 +190,7 @@ class Basedatoshelper {
         whereArgs: [id],
       );
     } catch (e) {
-      print("❌ Error al eliminar usuario: $e");
+      print("Error al eliminar usuario: $e");
       return 0;
     }
   }

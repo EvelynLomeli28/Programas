@@ -1,15 +1,13 @@
 import 'package:apptarea_unidad4/basededatos/basededatoshelper.dart';
 import 'package:flutter/material.dart';
-
 class Pagina1 extends StatefulWidget {
   const Pagina1({super.key});
   @override
-  State<StatefulWidget> createState() => _Pagina1State();
+  State<StatefulWidget> createState() => _Pagina1();
 }
-
-class _Pagina1State extends State<Pagina1> {
-  final TextEditingController _nombreController = TextEditingController();
-  final TextEditingController _correoController = TextEditingController();
+class _Pagina1 extends State<Pagina1> {
+  final TextEditingController nombre = TextEditingController();
+  final TextEditingController correo = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   
   List<Map<String, dynamic>> _usuarios = [];
@@ -29,8 +27,7 @@ class _Pagina1State extends State<Pagina1> {
 
   Future<void> _verificarBaseDatos() async {
     final estadisticas = await Basedatoshelper().obtenerEstadisticas();
-    print("📊 Estado BD: ${estadisticas['mensaje']}");
-    
+  
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Usuarios en BD: ${estadisticas['total']}'),
@@ -69,13 +66,13 @@ class _Pagina1State extends State<Pagina1> {
     
     try {
       await Basedatoshelper().insertar(
-        _nombreController.text,
-        _correoController.text,
+        nombre.text,
+        correo.text,
       );
       
       // Limpiar formulario
-      _nombreController.clear();
-      _correoController.clear();
+      nombre.clear();
+      correo.clear();
       
       // Recargar lista
       await _cargarUsuarios();
@@ -83,7 +80,7 @@ class _Pagina1State extends State<Pagina1> {
       // Mostrar mensaje
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('✅ Usuario agregado correctamente'),
+          content: Text('Usuario agregado correctamente'),
           backgroundColor: Colors.green,
         ),
       );
@@ -91,7 +88,7 @@ class _Pagina1State extends State<Pagina1> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('❌ Error: $e'),
+          content: Text('Error: $e'),
           backgroundColor: Colors.red,
         ),
       );
@@ -127,14 +124,14 @@ class _Pagina1State extends State<Pagina1> {
         
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('✅ "$nombre" eliminado'),
+            content: Text('"$nombre" eliminado'),
             backgroundColor: Colors.green,
           ),
         );
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('❌ Error: $e'),
+            content: Text('Error: $e'),
             backgroundColor: Colors.red,
           ),
         );
@@ -174,7 +171,7 @@ class _Pagina1State extends State<Pagina1> {
                   child: Column(
                     children: [
                       TextFormField(
-                        controller: _nombreController,
+                        controller: nombre,
                         decoration: const InputDecoration(
                           labelText: 'Nombre',
                           prefixIcon: Icon(Icons.person),
@@ -189,7 +186,7 @@ class _Pagina1State extends State<Pagina1> {
                       ),
                       const SizedBox(height: 16),
                       TextFormField(
-                        controller: _correoController,
+                        controller: correo,
                         decoration: const InputDecoration(
                           labelText: 'Correo',
                           prefixIcon: Icon(Icons.email),
@@ -225,30 +222,6 @@ class _Pagina1State extends State<Pagina1> {
               ),
             ),
           ),
-          
-          // INFO DE USUARIOS
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Usuarios registrados: $_totalUsuarios',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.refresh),
-                  onPressed: _cargando ? null : _cargarUsuarios,
-                  tooltip: 'Actualizar lista',
-                ),
-              ],
-            ),
-          ),
-          
-          const Divider(height: 1),
           
           // LISTA DE USUARIOS
           Expanded(

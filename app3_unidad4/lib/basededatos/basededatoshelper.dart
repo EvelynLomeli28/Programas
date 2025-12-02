@@ -1,9 +1,5 @@
-
-
-
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
 class Basedatoshelper {
    static final Basedatoshelper _instance = Basedatoshelper._internal();
    factory Basedatoshelper() => _instance;
