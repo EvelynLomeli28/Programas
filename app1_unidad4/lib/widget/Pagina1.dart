@@ -6,7 +6,6 @@ class Pagina1 extends StatefulWidget{
     return Clase();
   }
 }
-
 class Clase extends State<Pagina1>{
   final TextEditingController usuario = TextEditingController();
   final TextEditingController password = TextEditingController();
@@ -43,8 +42,7 @@ class Clase extends State<Pagina1>{
                       border: OutlineInputBorder(),
                        prefixIcon: Icon(Icons.person),
                        prefixIconColor: const Color.fromARGB(255, 183, 58, 81)
-                    ),
-                  ),
+                    ),),
                   TextField(
                     controller: password,
                     decoration: InputDecoration(
@@ -52,8 +50,7 @@ class Clase extends State<Pagina1>{
                       border: OutlineInputBorder(),
                        prefixIcon: Icon(Icons.password),
                        prefixIconColor: const Color.fromARGB(255, 183, 58, 108)
-                    ),
-                  ),
+                    ),),
                   SizedBox(height: 15),
                   SizedBox(
                     width: double.infinity,
@@ -61,8 +58,7 @@ class Clase extends State<Pagina1>{
                       onPressed: _agregar, 
                       label: Text('Agregar'),
                       icon: Icon(Icons.insert_chart),
-                      ),
-                  )
+                      ),)
               ],
                ),
           ),
